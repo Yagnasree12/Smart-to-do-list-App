@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 # Smart To-Do List App (enhanced)
 
 import streamlit as st
@@ -58,11 +58,14 @@ def main():
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
 
+    # Login simulation
     if not st.session_state.logged_in:
         st.title("🔐 Login")
         username = st.text_input("Username")
         if st.button("Login") and username:
             st.session_state.logged_in = True
+            st.success("Login successful! Reloading...")
+            time.sleep(1)
             st.experimental_rerun()
         return
 
@@ -84,7 +87,14 @@ def main():
 
     if dark_mode:
         st.markdown(
-            "<style>body { background-color: #0E1117; color: white; }</style>",
+            """
+            <style>
+            body {
+                background-color: #0E1117;
+                color: white;
+            }
+            </style>
+            """,
             unsafe_allow_html=True
         )
 
