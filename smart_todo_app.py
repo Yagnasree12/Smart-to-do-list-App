@@ -66,7 +66,10 @@ def main():
             st.session_state.logged_in = True
             st.success("Login successful! Reloading...")
             time.sleep(1)
-            st.experimental_rerun()
+            try:
+                st.rerun()
+            except AttributeError:
+                st.experimental_rerun()
         return
 
     st.title("✅ Smart To-Do List")
@@ -137,7 +140,7 @@ def main():
         delete = cols[4].button("🗑️", key=f"del-{task['id']}")
         if delete:
             st.session_state.tasks = [t for t in st.session_state.tasks if t['id'] != task['id']]
-            st.experimental_rerun()
+            st.rerun()
 
     st.subheader("📈 Productivity Overview")
     show_analytics(st.session_state.tasks)
