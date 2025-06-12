@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 # Smart To-Do List App (enhanced)
 
 import streamlit as st
